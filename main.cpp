@@ -29,17 +29,17 @@ string readStupidlyINI(string file, string section, string variable)  // TODO: O
 // .substr(start, length wanted or to the end); // Substring.
         {
             getline(flow, line);
-            cout << "line : " << line << endl; // Test.
+      //      cout << "line : " << line << endl; // Test ok.
 
                if ((line.substr(0, 1) == "[") && (line.substr(line.size() - 1) == "]")) // A section. Test ok.
             {
                 sectionNow = line;
-                cout << "section : " << sectionNow << endl; // Test.
+//                cout << "section : " << sectionNow << endl; // Test ok.
             }
             else if ((section == sectionNow) && (line.substr(0,variable.size()) == variable) && (equality ==(line.substr(variable.size(), 1 ))))   // If the size is good, it may be good.
             {
                 variableVal=line.substr(1+ variable.size());; // +1 because of "=". // The rest of the line.
-                cout << "variableVal : " << variableVal << endl; // Test.
+             //   cout << "variableVal : " << variableVal << endl; // Test ok.
             return variableVal; // Ok: out!
             }
         }        while (!(flow.eof()));
