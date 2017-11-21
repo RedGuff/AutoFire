@@ -5,11 +5,53 @@
 #include <time.h>       /* time */
 
 using namespace std;
-
-string ini(string file, string section, string variable)  // TODO: Optimisation! Lazy!
+string readStupidlyINI(string file, string section, string variable)  // TODO: Optimisation! Lazy!
 {
-// TODO: File!
-    return "";
+
+// ("AutoFire.ini", "[User]", "language")
+// Problems if commands are "".
+    string line = ""; // Line read in the file now.
+    string sectionNow = ""; // The section we are in.
+    string variableVal = ""; // The value of the variable.
+    string equality = "="; // Separator, 1 char.
+    ifstream flow(file.c_str());  // Ouverture du fichier en lecture.
+    if(!flow)
+    {
+        cerr << "ERROR: Impossible to open the file " << file << " to read it!" << endl;
+        cerr << "ERREUR : Impossible d'ouvrir le fichier  " << file << " en lecture !" << endl;
+        return ""; // => a replacement will be done.
+    }
+    else
+    {
+        do
+// Recall: // for Douglas Quaid!
+// .size();// size of a string
+// .substr(start, length wanted or to the end); // Substring.
+        {
+            getline(flow, line);
+            cout << "line : " << line << endl; // Test.
+
+               if ((line.substr(0, 1) == "[") && (line.substr(line.size() - 1) == "]")) // A section. Test ok.
+            {
+                sectionNow = line;
+                cout << "section : " << sectionNow << endl; // Test.
+            }
+            else if ((section == sectionNow) && (line.substr(0,variable.size()) == variable) && (equality ==(line.substr(variable.size(), 1 ))))   // If the size is good, it may be good.
+            {
+                variableVal=line.substr(1+ variable.size());; // +1 because of "=". // The rest of the line.
+                cout << "variableVal : " << variableVal << endl; // Test.
+            return variableVal; // Ok: out!
+            }
+        }        while (!(flow.eof()));
+            // Not out after the end of the file: bad.
+        flow.close();
+
+            cerr << "Error when reading file " << file << ": " << variable << " is not in the section "<< section << "!" << endl;
+            return ""; // => a replacement will be done.
+
+
+
+    }
 }
 
 string generator(int difficulte)
@@ -76,9 +118,14 @@ string generator(int difficulte)
 int main()
 {
     srand (time(NULL)); // Usual init; Pseudo rand is enough.
-    string language = "en";
-    language = ini("AutoFire.txt", "[User]", "language");
-
+    string language = "";
+    language = readStupidlyINI("AutoFire.ini", "[User]", "language"); // A simple function is enough, in general,
+    // (and a general is more ranked than a lieutenant).
+    if (language == "")   // Problem with INI file.
+    {
+        string language = "en"; // If problem: english.
+    }
+    cout << language << endl; // Test.
 // LGG
     cout << "Fire (http://stephane.mitermite.free.fr/)" << endl;
     cout << "AutoFire 0.1 (RedGuff)." << endl;
@@ -90,16 +137,17 @@ int main()
     cin >> nbRoom; // Pas texte !!! Non nul, entier, positif, pas trop grand.
     if (nbRoom >1)
     {
-cout << "diffStart ? : " << endl; // File.
-    cin >> diffStart; // Pas texte !!!
+        cout << "diffStart ? : " << endl; // File.
+        cin >> diffStart; // Pas texte !!!
 
         cout << "diffEnd ? : " << endl; // File.
 
         cin >> diffEnd; // Pas texte !!!
     }
-    else {
-cout << "diff ? : " << endl; // File.
-    cin >> diffStart; // Pas texte !!!
+    else
+    {
+        cout << "diff ? : " << endl; // File.
+        cin >> diffStart; // Pas texte !!!
 
 
     }
@@ -117,20 +165,22 @@ cout << "diff ? : " << endl; // File.
     else
     {
         //      cerr << "Error2, file ok!/n"; // Test ok.
-                int diff = diffStart;
+        int diff = diffStart;
         for (int room = 1; room < nbRoom +1; room++) // For each room to make.
         {
-            if(nbRoom>1){
-                diff = diffStart + ((room -1) * ((diffEnd - diffStart)/ (nbRoom-1))); // Approx affine.
-        }
+            if(nbRoom>1)
+            {T 1 4 34
+                            1           2                  3                2
+                diff = diffStart + ((room -1) * ((diffEnd - diffStart)/ (nbRoom-1))); // Approx affine. Pb with INT (approx).
+            }
 
             string roomText = ""; // Room now.
             roomText=generator(diff);
 
             //roomText="TEST"; // Test ok.
-         //   cout << "room : " << room << endl; // Test ok.
-          //  cout << "diff : " << diff << endl; // Test ok.
-           // cout << roomText << endl; // Test ok.
+            //   cout << "room : " << room << endl; // Test ok.
+            //  cout << "diff : " << diff << endl; // Test ok.
+            // cout << roomText << endl; // Test ok.
 
 
             myFile << roomText;// append file.
