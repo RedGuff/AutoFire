@@ -169,8 +169,8 @@ int main()
         for (int room = 1; room < nbRoom +1; room++) // For each room to make.
         {
             if(nbRoom>1)
-            {T 1 4 34
-                            1           2                  3                2
+            {T // 1 4 34
+          //                1           2                  3                2
                 diff = diffStart + ((room -1) * ((diffEnd - diffStart)/ (nbRoom-1))); // Approx affine. Pb with INT (approx).
             }
 
