@@ -110,69 +110,117 @@ string generator(int difficulte, string strMethod) // Just make a room, with dif
 
 // Now, it depends of the method wanted:
 // switch (strMethod) // switch is only for int.
-{
+    {
 
-if (strMethod == "0") {// difficulte = number of flames, in one simple line.
-// For each position of the room:
-    for (int j = 1;  j < MAXY + 1; j++)
+        if (strMethod == "0")  // difficulte = number of flames, in one simple line.
         {
-            for (int i = 1; i < MAXX + 1; i++ )
+// For each position of the room:
+            for (int j = 1;  j < MAXY + 1; j++)
             {
-                if ((XBall == i) && (YBall == j))
+                for (int i = 1; i < MAXX + 1; i++ )
                 {
-                    resultRoom += "B"; // Ball ("Balle" in French).
-                }
-                else if((XBox == i) && (YBox == j))
-                {
-                    resultRoom += "C"; // Box ("Caisse" is French for Box).
-                }
-                else if (difficulte>0)
-                {
-                    resultRoom += "F"; // Fire ("Feu" in French).
-                    difficulte--; // The more the room is difficult, the more fire You have.
-                }
-                else
-                {
-                    resultRoom += "V"; // Void ("Vide" in French).
+                    if ((XBall == i) && (YBall == j))
+                    {
+                        resultRoom += "B"; // Ball ("Balle" in French).
+                    }
+                    else if((XBox == i) && (YBox == j))
+                    {
+                        resultRoom += "C"; // Box ("Caisse" is French for Box).
+                    }
+                    else if (difficulte>0)
+                    {
+                        resultRoom += "F"; // Fire ("Feu" in French).
+                        difficulte--; // The more the room is difficult, the more fire You have.
+                    }
+                    else
+                    {
+                        resultRoom += "V"; // Void ("Vide" in French).
+                    }
                 }
             }
+            // End of method 0.
         }
-    // End of method 0.
-} else if (strMethod == "1"){
-int NbRemaining = MAXX * MAXY ; // Number of remaining compartments. You can try to calculate it each time, but it's simpler like this.
-  // difficulte = number of flames, in random places.
-// For each position of the room:
-        for (int j = 1;  j < MAXY + 1; j++)
+        else if (strMethod == "1")
         {
-            for (int i = 1; i < MAXX + 1; i++ )
+            int NbRemaining = MAXX * MAXY ; // Number of remaining compartments. You can try to calculate it each time, but it's simpler like this.
+            // difficulte = number of flames, in random places.
+// For each position of the room:
+            for (int j = 1;  j < MAXY + 1; j++)
             {
-             //   NbRemaining--;
-                if ((XBall == i) && (YBall == j))
+                for (int i = 1; i < MAXX + 1; i++ )
                 {
-                    resultRoom += "B"; // Ball.
-                }
-                else if((XBox == i) && (YBox == j))
-                {
-                    resultRoom += "C"; // Box.
-                }
-                else if (((double)rand()/(double)RAND_MAX)<((double)difficulte/(double)NbRemaining)) // If the probability of case to have a flame is good, depending of the real number of flames and of the number of flames to do.
+                    //   NbRemaining--;
+                    if ((XBall == i) && (YBall == j))
+                    {
+                        resultRoom += "B"; // Ball.
+                    }
+                    else if((XBox == i) && (YBox == j))
+                    {
+                        resultRoom += "C"; // Box.
+                    }
+                    else if (((double)rand()/(double)RAND_MAX)<((double)difficulte/(double)NbRemaining)) // If the probability of case to have a flame is good, depending of the real number of flames and of the number of flames to do.
 //    (double)rand()/(double)RAND_MAX is always between 0 and 1.
 // If not double: int => 000000011111.
-                {
+                    {
 
-                    resultRoom += "F"; // Fire.
-                    difficulte--; // The more the room is difficult, the more fire You have.
+                        resultRoom += "F"; // Fire.
+                        difficulte--; // The more the room is difficult, the more fire You have.
+                    }
+                    else
+                    {
+                        resultRoom += "V"; // Void.
+                    }
+                    NbRemaining--; // End of this place(i;j).
+
                 }
-                else
+            } // End of for.
+
+
+        }
+        else if (strMethod == "2")   // End of method 1.
+        {
+            int NbRemaining = MAXX * MAXY ; // Number of remaining compartments. You can try to calculate it each time, but it's simpler like this.
+
+            difficulte *=2; // difficulte = number of flames AND walls, in random places.
+// For each position of the room:
+            for (int j = 1;  j < MAXY + 1; j++)
+            {
+                for (int i = 1; i < MAXX + 1; i++ )
                 {
-                    resultRoom += "V"; // Void.
+                    //   NbRemaining--;
+                    if ((XBall == i) && (YBall == j))
+                    {
+                        resultRoom += "B"; // Ball.
+                    }
+                    else if((XBox == i) && (YBox == j))
+                    {
+                        resultRoom += "C"; // Box.
+                    }
+                    else if (((double)rand()/(double)RAND_MAX)<((double)difficulte/(double)NbRemaining)) // If the probability of case to have a flame is good, depending of the real number of flames and of the number of flames to do.
+//    (double)rand()/(double)RAND_MAX is always between 0 and 1.
+// If not double: int => 000000011111.
+                    {
+
+                        resultRoom += "F"; // Fire.
+                        difficulte--; // The more the room is difficult, the more fire You have.
+                    }
+
+                    else if (((double)rand()/(double)RAND_MAX)<((double)difficulte/(double)NbRemaining)) // If the probability of case to have a flame is good, depending of the real number of flames and of the number of flames to do.
+
+                    {
+
+                        resultRoom += "W"; // Fire.
+                        difficulte--; // The more the room is difficult, the more wall You have.
+                    }
+                    else
+                    {
+                        resultRoom += "V"; // Void.
+                    }
+                    NbRemaining--; // End of this place(i;j).
+
                 }
-                   NbRemaining--; // End of this place(i;j).
-
-            }
-        } // End of for.
-        } // End of method 1.
-
+            } // End of for.
+        } // End of method 2.
     } // End of all methods.
     return resultRoom;
 }
@@ -191,13 +239,13 @@ int main()
     // cout << language << endl; // Test ok.
 // LGG
     cout << "Fire (http://stephane.mitermite.free.fr/)" << endl;
-    cout << "AutoFire 0.2 (RedGuff)." << endl;
+    cout << "AutoFire 0.3 (RedGuff)." << endl;
     cout << "nbRoom? : " << endl; // File. // Max string in C++ ?
     int nbRoom = 1; // Numbr of rooms of the file.
     int diffStart = 1; // Start easy (the first room).
     int diffEnd = 1; // End hard (the last room).
     string name = "temp";
-    cin >> nbRoom; // Pas texte !!! Non nul, entier, positif, pas trop grand.
+    cin >> nbRoom; // TODO: Pas texte !!! Non nul, entier, positif, pas trop grand.
     if (nbRoom >1)
     {
         cout << "diffStart ? : " << endl; // File.
@@ -237,9 +285,9 @@ int main()
             string roomText = ""; // Room now.
             do
             {
-                string method="1"; // Futur INI.
+                string method="2"; // Futur INI.
                 roomText=generator(diff, method);
-                // string method="1"; // Last known good.
+                // string method="2"; // Last known good.
             }
             while (roomText=="");  // If problem of method.
             myFile << roomText;// append file.
