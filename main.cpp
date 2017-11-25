@@ -209,7 +209,7 @@ string generator(int difficulte, string strMethod) // Just make a room, with dif
 
                     {
 
-                        resultRoom += "W"; // Fire.
+                        resultRoom += "W"; // Wall.
                         difficulte--; // The more the room is difficult, the more wall You have.
                     }
                     else
