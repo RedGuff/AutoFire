@@ -1,0 +1,13 @@
+[Good]
+intro=Welcome.
+about=This software makes a file of rooms for Fire from Mister Mitermite. \nIt makes a new one, or append an older one.
+errNombreSPos=I want a strictly positive number, and of reasonable size!
+nbRoom=How many rooms do you want?
+diffStart=Which level of difficulties do you want to start?
+diffEnd=Which level of difficulties do you want to end?
+name=What name do You want for the file? (Just the name: I will add \".niv\"):
+verboseEnd=You can readd and edit the file with \"Editeur.exe\".
+ok=Ok!
+
+[Errors]
+errWFile=Error, when I try too write the file!
