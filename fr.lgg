@@ -1,0 +1,13 @@
+[Good]
+intro=Bienvenue.
+about=Ce logiciel vous fait un fichier de salles pour Fire de Monsieur Mitermite. \nIl allonge un fichier existant ou en fait un nouveau.
+errNombreSPos=Je veux un nombre strictement positif, et de taille raisonnable !
+nbRoom=Combien de salles voulez-vous ?
+diffStart=Quel niveau d\'efforts voulez-vous pour commencer ?
+diffEnd=Quel niveau d\'efforts voulez-vous pour terminer ?
+name=Quel nom de fichier voulez-vous ? (Que le nom, j\'ajouterai \".niv\").
+verboseEnd=Vous pouvez regarder et modifier le ficher avec \"Editeur.exe\".
+ok=Ok !
+
+[Errors]
+errWFile=Erreur, lorsque je tente d\'enregistrer le fichier !
