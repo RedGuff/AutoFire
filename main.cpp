@@ -234,7 +234,7 @@ int main()
     // (and a general is more ranked than a lieutenant).
     if (language == "")   // Problem with INI file.
     {
-        string language = "en"; // If problem: english.
+        string language = "en.lgg"; // If problem: english.
     }
     // cout << language << endl; // Test ok.
 // LGG
