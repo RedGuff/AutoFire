@@ -1,11 +1,11 @@
 # AutoFire
 
-Fire is a game from Mr Stéphane Mitermite; AutoFire contains a *very* simple and stupid INI reader (my own code)!
+Fire is a game from Mr Stéphane Mitermite, AutoFire contains a *very* simple and stupid INI reader (my own code)!
 
-I do not own the game, it's code, it's name...
+I do not own the game Fire, it's code, it's name...
 
-I was very long to do this software, and I restarted it many times.
+I was very long to do AutoFire, and I restarted it many times.
 
-* http://stephane.mitermite.free.fr/ pour le jeu en français. 
-* http://stephane.mitermite.free.fr//index.php?lang=en for the game in English.
+* http://stephane.mitermite.free.fr/ pour le jeu Fire en français. 
+* http://stephane.mitermite.free.fr//index.php?lang=en for the game Fire in English.
 * https://github.com/RedGuff/AutoFire for AutoFire.
