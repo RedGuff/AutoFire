@@ -1,6 +1,6 @@
 # AutoFire
 
-Fire is a game from Mr Stéphane Mitermite. It contains a *very* simple and stupid INI reader (my own code)!
+Fire is a game from Mr Stéphane Mitermite; AutoFire contains a *very* simple and stupid INI reader (my own code)!
 
 I do not own the game, it's code, it's name...
 
