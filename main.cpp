@@ -109,7 +109,7 @@ string generator(int difficulte, string strMethod) // Just make a room, with dif
     }
 
 // Now, it depends of the method wanted:
-// switch (strMethod) // switch is only for int.
+// switch (strMethod) // switch is only for int or char.
     {
 
         if (strMethod == "0")  // difficulte = number of flames, in one simple line.
