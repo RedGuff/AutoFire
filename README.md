@@ -1,7 +1,7 @@
 # AutoFire
 Fire is a free 3D puzzle game from Mr Stéphane Mitermite.
 
-AutoFire contains a *very* simple and stupid INI reader (my own code)!
+Old version: AutoFire contained a *very* simple and stupid INI reader (my own code)!
 
 I do not own the game Fire, it's code, it's name...
 
