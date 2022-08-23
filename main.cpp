@@ -363,7 +363,7 @@ int main(int argc, char* argv[]) { // Arguments: file(.niv) nbRoom DiffStart Dif
         }
     ofstream myFile(file.c_str(), ios::app); // Open to append, ".niv" included.
     if (!myFile) {
-        cerr << "Error1, Imposible to write in the file: " << file << "!" << endl;
+        cerr << "Error1! Impossible to write in the file: " << file << "!" << endl;
         }
     else {
         for (int room=1; room<nbRoom + 1; ++room) {
